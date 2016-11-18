@@ -82,9 +82,10 @@ public class LuceneSearchApp {
 		List<String> results = new LinkedList<String>();
 
 		try {
+			//TODO test on first item only - first query should be ok
 			String queryString=inTitle.get(0);
 			System.out.println(queryString);
-			Query query = queryParser.parse("\""+queryString+"\"");
+			Query query = queryParser.parse(queryString);
 			TopDocs hits = indexSearcher.search(query, 5);
 			System.out.println("Found: "+hits.totalHits);
 			for(ScoreDoc sc: hits.scoreDocs){
